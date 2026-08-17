@@ -98,6 +98,26 @@
   .subgroup:first-of-type{padding-top:0;border-top:none;}
   .subgroup h3{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
 
+  /* Smart numbered headings for the three groups in Section 01 */
+  .numbered-subheading{
+    display:flex;
+    align-items:center;
+    gap:11px;
+  }
+  .subheading-number{
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    font:600 12px 'Inter',sans-serif;
+    letter-spacing:0;
+  }
+
   .row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
   .row.three{grid-template-columns:1fr 1fr 1fr;}
   .row.single{grid-template-columns:1fr;}
@@ -166,6 +186,99 @@
   .review-item dd{margin:0;font-size:14px;word-break:break-word;}
   .review-item.full{grid-column:1/-1;}
 
+
+  /* ---------- structured review layout ---------- */
+  .review-grid{
+    display:block;
+    margin:0 0 24px;
+  }
+  .review-section{
+    margin:0 0 18px;
+    border:1px solid var(--rule);
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .review-section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:13px 16px;
+    background:#f7f8f6;
+    border-bottom:1px solid var(--rule);
+  }
+  .review-section-title{
+    margin:0;
+    font:600 12px 'Inter',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--ink);
+  }
+  .review-section-number{
+    font:600 10px 'Inter',sans-serif;
+    letter-spacing:.08em;
+    color:var(--slate);
+  }
+  .review-section-body{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+  }
+  .review-item{
+    min-width:0;
+    padding:13px 16px;
+    border-bottom:1px solid #edf0ed;
+    border-right:1px solid #edf0ed;
+  }
+  .review-item:nth-child(even){border-right:0;}
+  .review-item.full{
+    grid-column:1/-1;
+    border-right:0;
+  }
+  .review-item:last-child,
+  .review-item:nth-last-child(2):nth-child(odd){border-bottom:0;}
+  .review-item dt{
+    font-size:9.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.075em;
+    color:var(--slate);
+    margin:0 0 5px;
+  }
+  .review-item dd{
+    margin:0;
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink);
+    word-break:break-word;
+    white-space:pre-wrap;
+  }
+  .review-item.empty dd{color:#9aa29d;font-style:italic;}
+  .review-file{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+  }
+  .review-file-icon{
+    width:30px;height:30px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--rule);border-radius:6px;
+    font-size:12px;color:var(--slate);background:#fafbfa;
+  }
+  .review-file-name{min-width:0;overflow-wrap:anywhere;}
+  .review-highlight{
+    background:#fbfcfa;
+    border-color:var(--rule);
+  }
+  .review-highlight dd{font-size:15px;font-weight:600;}
+  @media(max-width:700px){
+    .review-section-body{grid-template-columns:1fr;}
+    .review-item,.review-item.full{border-right:0;}
+    .review-item:last-child{border-bottom:0;}
+  }
+
   .status{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:13.5px;color:var(--slate);min-height:20px;}
   .status .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.1s infinite ease-in-out;}
   @keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
@@ -181,6 +294,143 @@
   .confirm .ref{margin-top:22px;font-size:12px;color:var(--slate);letter-spacing:.04em;}
 
   .hidden{display:none!important;}
+
+  /* ---------- draft protection ---------- */
+  .draft-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:0 0 14px;
+    padding:10px 13px;
+    border:1px solid var(--rule);
+    border-radius:7px;
+    background:rgba(255,255,255,.86);
+    font-size:12px;
+    color:var(--slate);
+  }
+  .draft-status{display:flex;align-items:center;gap:8px;}
+  .draft-status::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--gold);flex:0 0 auto;
+  }
+  .draft-status.saved::before{background:var(--sage);}
+  .draft-status.saving::before{background:var(--gold);}
+  .draft-status.error::before{background:var(--err);}
+  .draft-clear{
+    border:1px solid var(--rule);
+    background:transparent;
+    color:var(--slate);
+    border-radius:5px;
+    padding:6px 10px;
+    font:600 11px 'Inter',sans-serif;
+    cursor:pointer;
+  }
+  .draft-clear:hover{border-color:var(--err);color:var(--err);}
+
+  /* ---------- compact professional referees layout ---------- */
+  .referees-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .referee-card{
+    min-width:0;
+    border:1px solid var(--rule);
+    border-radius:9px;
+    padding:18px;
+    background:linear-gradient(180deg,#fff 0%,#fbfcfb 100%);
+  }
+  .referee-card-head{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding-bottom:14px;
+    margin-bottom:16px;
+    border-bottom:1px solid var(--rule);
+  }
+  .referee-number{
+    width:34px;height:34px;
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--sage);
+    color:#fff;
+    font:600 12px 'Inter',sans-serif;
+  }
+  .referee-card-head h3{
+    margin:0 0 2px;
+    font-size:13px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--sage);
+  }
+  .referee-card-head p{
+    margin:0;
+    font-size:11px;
+    color:var(--slate);
+  }
+  .referee-fields{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px 12px;
+  }
+  .referee-fields .field{min-width:0;}
+  .referee-fields .field:nth-child(1),
+  .referee-fields .field:nth-child(2){grid-column:span 1;}
+  .referee-note{
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+    margin:0 0 22px;
+    padding:11px 13px;
+    border-left:3px solid var(--sage);
+    background:color-mix(in srgb,var(--sage) 6%,transparent);
+    color:var(--slate);
+    font-size:11.5px;
+    line-height:1.5;
+  }
+  .referee-note span{
+    color:var(--sage);
+    font-weight:700;
+    white-space:nowrap;
+  }
+  @media(max-width:760px){
+    .referees-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:600px){
+    .draft-bar{align-items:flex-start;flex-direction:column;}
+    .referee-fields{grid-template-columns:1fr;}
+  }
+
+
+/* Referees: keep the two referees as two full-width rows */
+.referees-grid,
+.referee-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 14px;
+}
+.referee-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.review-referees {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 12px;
+}
+.review-referee {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 </style>
 </head>
 <body>
@@ -198,6 +448,10 @@
   </header>
 
   <div class="frame" id="formFrame">
+    <div class="draft-bar" id="draftBar" aria-live="polite">
+      <span class="draft-status" id="draftStatus">Draft not saved yet</span>
+      <button type="button" class="draft-clear" id="clearDraftBtn">Clear saved draft</button>
+    </div>
     <p style="font-size:12px;color:var(--slate);margin:0 0 14px;">Fields marked <span style="color:var(--err);font-weight:700;">*</span> are required.</p>
     <nav class="rail" id="rail">
       <div class="tab active" data-idx="0"><span class="n">01</span> Personal</div>
@@ -217,7 +471,7 @@
         <p class="sub">Basic identification and how we'll reach you.</p>
 
         <div class="subgroup">
-          <h3>Identity</h3>
+          <h3 class="numbered-subheading"><span class="subheading-number">01</span><span>Identity</span></h3>
           <div class="row">
             <div class="field" data-req>
               <label for="fullName">Full name (as on ID)</label>
@@ -272,7 +526,7 @@
         </div>
 
         <div class="subgroup">
-          <h3>Contact</h3>
+          <h3 class="numbered-subheading"><span class="subheading-number">02</span><span>Contact</span></h3>
           <div class="row">
             <div class="field" data-req>
               <label for="phone">Phone number</label>
@@ -305,7 +559,7 @@
 
 
         <div class="subgroup">
-          <h3>Statutory numbers</h3>
+          <h3 class="numbered-subheading"><span class="subheading-number">03</span><span>Statutory numbers</span></h3>
           <div class="row three">
             <div class="field" data-req>
               <label for="kraPin">KRA PIN</label>
@@ -510,63 +764,83 @@
       <!-- 05 REFEREES -->
       <section class="sheet hidden" data-tag="Sheet 5 of 7" data-section="4">
         <h2>Referees</h2>
-        <p class="sub">Two professional referees who can speak to your work.</p>
+        <p class="sub">Provide two professional referees who can speak to your work, conduct and experience.</p>
 
-        <div class="subgroup">
-          <h3>Referee 1</h3>
-          <div class="row">
-            <div class="field" data-req>
-              <label for="ref1Name">Name</label>
-              <input id="ref1Name" name="ref1Name" type="text">
-              <span class="err">Enter a name.</span>
+        <div class="referees-grid">
+
+          <div class="referee-card">
+            <div class="referee-card-head">
+              <span class="referee-number">01</span>
+              <div>
+                <h3>Referee 1</h3>
+                <p>Professional reference</p>
+              </div>
             </div>
-		 <div class="field" data-req>
-              <label for="ref1Name">Role/Organisation</label>
-              <input id="ref1Name" name="ref1Name" type="text">
-              <span class="err">Enter the role and organisation of your referee</span>
+
+            <div class="referee-fields">
+              <div class="field" data-req>
+                <label for="ref1Name">Full name</label>
+                <input id="ref1Name" name="ref1Name" type="text" autocomplete="name">
+                <span class="err">Enter the referee's name.</span>
+              </div>
+
+              <div class="field">
+                <label for="ref1Organisation">Organisation &amp; role</label>
+                <input id="ref1Organisation" name="ref1Organisation" type="text">
+              </div>
+
+              <div class="field" data-req>
+                <label for="ref1Phone">Phone</label>
+                <input id="ref1Phone" name="ref1Phone" type="tel" autocomplete="tel">
+                <span class="err">Enter a phone number.</span>
+              </div>
+
+              <div class="field" data-req>
+                <label for="ref1Email">Email</label>
+                <input id="ref1Email" name="ref1Email" type="email" autocomplete="email">
+                <span class="err">Enter a valid email address.</span>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="field" data-req>
-              <label for="ref1Phone">Phone</label>
-              <input id="ref1Phone" name="ref1Phone" type="tel">
-              <span class="err">Enter a phone number.</span>
+
+          <div class="referee-card">
+            <div class="referee-card-head">
+              <span class="referee-number">02</span>
+              <div>
+                <h3>Referee 2</h3>
+                <p>Professional reference</p>
+              </div>
             </div>
-            <div class="field" data-req>
-              <label for="ref1Email">Email</label>
-              <input id="ref1Email" name="ref1Email" type="email">
+
+            <div class="referee-fields">
+              <div class="field" data-req>
+                <label for="ref2Name">Full name</label>
+                <input id="ref2Name" name="ref2Name" type="text" autocomplete="name">
+                <span class="err">Enter the referee's name.</span>
+              </div>
+
+              <div class="field">
+                <label for="ref2Organisation">Organisation &amp; role</label>
+                <input id="ref2Organisation" name="ref2Organisation" type="text">
+              </div>
+
+              <div class="field" data-req>
+                <label for="ref2Phone">Phone</label>
+                <input id="ref2Phone" name="ref2Phone" type="tel" autocomplete="tel">
+                <span class="err">Enter a phone number.</span>
+              </div>
+
+              <div class="field" data-req>
+                <label for="ref2Email">Email</label>
+                <input id="ref2Email" name="ref2Email" type="email" autocomplete="email">
+                <span class="err">Enter a valid email address.</span>
+              </div>
             </div>
           </div>
+
         </div>
 
-        <div class="subgroup">
-          <h3>Referee 2</h3>
-          <div class="row">
-            <div class="field" data-req>
-              <label for="ref2Name">Name</label>
-              <input id="ref2Name" name="ref2Name" type="text">
-              <span class="err">Enter a name.</span>
-            </div>
-			 <div class="field" data-req>
-              <label for="ref1Name">Role/Organisation</label>
-              <input id="ref1Name" name="ref1Name" type="text">
-              <span class="err">Enter the role and organisation of your referee</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="field" data-req>
-              <label for="ref2Phone">Phone</label>
-              <input id="ref2Phone" name="ref2Phone" type="tel">
-              <span class="err">Enter a phone number.</span>
-            </div>
-            <div class="field" data-req>
-              <label for="ref2Email">Email</label>
-              <input id="ref2Email" name="ref2Email" type="email">
-            </div>
-          </div>
-        </div>
-
-        <div class="sheet-nav">
+<div class="sheet-nav">
           <button type="button" class="btn ghost" data-back>Back</button>
           <button type="button" class="btn primary" data-next>Continue</button>
         </div>
@@ -708,6 +982,154 @@ const sheets = [...document.querySelectorAll('.sheet')];
 const tabs = [...document.querySelectorAll('.tab')];
 let current = 0;
 
+/* =========================================================
+   AUTOMATIC DRAFT PROTECTION
+   Text, select and textarea fields are stored locally as the
+   applicant types. The last section is stored too.
+   File inputs cannot be restored by browsers for security reasons,
+   so the applicant must re-select uploaded files after a refresh.
+   ========================================================= */
+const DRAFT_KEY = 'jazTechEmploymentApplicationDraft_v3';
+let draftTimer = null;
+let restoringDraft = false;
+
+const draftStatus = document.getElementById('draftStatus');
+const clearDraftBtn = document.getElementById('clearDraftBtn');
+
+function setDraftStatus(message, state=''){
+  if(!draftStatus) return;
+  draftStatus.textContent = message;
+  draftStatus.className = 'draft-status' + (state ? ' ' + state : '');
+}
+
+function collectDraft(){
+  const data = {};
+  form.querySelectorAll('input, select, textarea').forEach(input=>{
+    if(!input.name || input.type === 'file') return;
+    data[input.name] = input.value;
+  });
+
+  data.__currentSection = current;
+  data.__savedAt = new Date().toISOString();
+  data.__fileNames = {};
+
+  UPLOAD_FIELDS.forEach(f=>{
+    const input = document.getElementById(f.id);
+    if(input && input.files && input.files[0]){
+      data.__fileNames[f.id] = input.files[0].name;
+    }
+  });
+
+  return data;
+}
+
+function saveDraft(){
+  if(restoringDraft) return;
+  try{
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(collectDraft()));
+    setDraftStatus('Draft saved automatically','saved');
+  }catch(err){
+    console.error('Draft save error:',err);
+    setDraftStatus('Draft could not be saved','error');
+  }
+}
+
+function queueDraftSave(){
+  if(restoringDraft) return;
+  clearTimeout(draftTimer);
+  setDraftStatus('Saving draft…','saving');
+  draftTimer=setTimeout(saveDraft,250);
+}
+
+function restoreDraft(){
+  let raw=null;
+
+  try{
+    raw=localStorage.getItem(DRAFT_KEY);
+  }catch(err){
+    setDraftStatus('Draft storage is unavailable','error');
+    return;
+  }
+
+  if(!raw){
+    setDraftStatus('No saved draft');
+    return;
+  }
+
+  try{
+    const data=JSON.parse(raw);
+    restoringDraft=true;
+
+    form.querySelectorAll('input, select, textarea').forEach(input=>{
+      if(!input.name || input.type === 'file') return;
+      if(Object.prototype.hasOwnProperty.call(data,input.name)){
+        input.value=data[input.name];
+      }
+    });
+
+    // File names are remembered only as a reminder.
+    if(data.__fileNames){
+      UPLOAD_FIELDS.forEach(f=>{
+        const fileName=data.__fileNames[f.id];
+        if(!fileName) return;
+        const label=document.getElementById(f.id+'Name');
+        const wrap=document.getElementById(f.id+'Upload');
+        if(label) label.textContent=fileName+' — re-select file';
+        if(wrap) wrap.classList.add('filled');
+      });
+    }
+
+    const savedSection=Number(data.__currentSection);
+    const target=Number.isInteger(savedSection) &&
+                 savedSection>=0 &&
+                 savedSection<sheets.length ? savedSection : 0;
+
+    restoringDraft=false;
+    showSection(target);
+    setDraftStatus('Saved draft restored','saved');
+  }catch(err){
+    restoringDraft=false;
+    console.error('Draft restore error:',err);
+    setDraftStatus('Saved draft could not be restored','error');
+  }
+}
+
+function clearDraft(){
+  if(!confirm('Clear the saved application draft? All saved form information on this browser will be removed.')) return;
+
+  try{ localStorage.removeItem(DRAFT_KEY); }catch(err){}
+
+  restoringDraft=true;
+  form.reset();
+
+  const nationality=document.getElementById('nationality');
+  if(nationality) nationality.value='Kenyan';
+
+  UPLOAD_FIELDS.forEach(f=>{
+    const input=document.getElementById(f.id);
+    const label=document.getElementById(f.id+'Name');
+    const wrap=document.getElementById(f.id+'Upload');
+    if(input) input.value='';
+    if(label) label.textContent=label.dataset.defaultText || f.label;
+    if(wrap) wrap.classList.remove('filled');
+  });
+
+  form.querySelectorAll('.field.invalid').forEach(field=>{
+    field.classList.remove('invalid');
+  });
+
+  restoringDraft=false;
+  showSection(0);
+  setDraftStatus('Draft cleared');
+}
+
+clearDraftBtn.addEventListener('click',clearDraft);
+
+form.addEventListener('input',queueDraftSave);
+form.addEventListener('change',queueDraftSave);
+
+window.addEventListener('beforeunload',()=>saveDraft());
+
 document.getElementById('fileNo').textContent = String(Date.now()).slice(-6);
 
 function showSection(idx){
@@ -717,6 +1139,7 @@ function showSection(idx){
     t.classList.toggle('done', i<idx);
   });
   current = idx;
+  if(!restoringDraft) queueDraftSave();
   if(idx===6) buildReview();
   document.getElementById('formFrame').scrollIntoView({behavior:'smooth', block:'start'});
 }
@@ -773,6 +1196,7 @@ function wireUpload(id){
     label.textContent = file.name;
     wrap.classList.add('filled');
     wrap.closest('.field').classList.remove('invalid');
+    queueDraftSave();
   });
 }
 UPLOAD_FIELDS.forEach(f => wireUpload(f.id));
@@ -801,35 +1225,140 @@ const REVIEW_LABELS = {
   itSkills:'IT skills', languages:'Languages',
   currentEmployer:'Current employer', currentJobTitle:'Job title', experience:'Experience',
   reasonLeaving:'Reason for leaving', keyResponsibilities:'Key responsibilities', whyFit:'Why a good fit',
-  ref1Name:'Referee 1', ref1Phone:'Referee 1 phone', ref1Email:'Referee 1 email',
-  ref2Name:'Referee 2', ref2Phone:'Referee 2 phone', ref2Email:'Referee 2 email',
+  ref1Name:'Referee 1 name', ref1Organisation:'Referee 1 organisation & role',
+  ref1Phone:'Referee 1 phone', ref1Email:'Referee 1 email',
+  ref2Name:'Referee 2 name', ref2Organisation:'Referee 2 organisation & role',
+  ref2Phone:'Referee 2 phone', ref2Email:'Referee 2 email',
   otherLink:'Other links'
 };
 const REVIEW_FULL_WIDTH = new Set(['keyResponsibilities','whyFit']);
+
+restoreDraft();
 
 function buildReview(){
   const data = new FormData(form);
   const grid = document.getElementById('reviewGrid');
   grid.innerHTML = '';
 
-  UPLOAD_FIELDS.forEach(f=>{
-    const file = document.getElementById(f.id).files[0];
-    if(!file && !f.required) return;
-    const item = document.createElement('div');
-    item.className = 'review-item';
-    item.innerHTML = `<dt>${f.label}</dt><dd>${file ? escapeHtml(file.name) : '—'}</dd>`;
-    grid.appendChild(item);
+  const sections = [
+    {
+      title:'Application & personal details',
+      keys:['position','fullName','idNumber','dob','gender','maritalStatus','nationality','county','availability','source']
+    },
+    {
+      title:'Contact information',
+      keys:['phone','altPhone','email','postalAddress','physicalAddress']
+    },
+    {
+      title:'Identification & statutory details',
+      keys:['kraPin','nssfNumber','shaNumber']
+    },
+    {
+      title:'Education & professional qualifications',
+      keys:['educationLevel','institution','courseOfStudy','graduationYear','professionalBody','certifications']
+    },
+    {
+      title:'Technical skills & languages',
+      keys:['itSkills','languages']
+    },
+    {
+      title:'Employment & experience',
+      keys:['currentEmployer','currentJobTitle','experience','reasonLeaving','keyResponsibilities','whyFit']
+    },
+    {
+      title:'Position preferences & compensation',
+      keys:['currentSalary','expectedSalary','relocate','drivingLicense']
+    },
+    {
+      title:'Referees',
+      keys:['ref1Name','ref1Organisation','ref1Phone','ref1Email','ref2Name','ref2Organisation','ref2Phone','ref2Email']
+    },
+    {
+      title:'Documents & additional links',
+      keys:['otherLink']
+    }
+  ];
+
+  const formatValue = (key, value) => {
+    if(value === null || value === undefined || value === '') return '—';
+    const v = String(value);
+    if(key === 'dob'){
+      const d = new Date(v + 'T00:00:00');
+      if(!Number.isNaN(d.getTime())){
+        return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+      }
+    }
+    if(['currentSalary','expectedSalary'].includes(key)){
+      const n = Number(v.replace(/,/g,''));
+      if(Number.isFinite(n)) return 'KES ' + n.toLocaleString('en-KE');
+    }
+    return v;
+  };
+
+  const addSection = (title, number, items) => {
+    if(!items.length) return;
+    const section = document.createElement('section');
+    section.className = 'review-section';
+
+    const head = document.createElement('div');
+    head.className = 'review-section-head';
+    head.innerHTML = `<h3 class="review-section-title">${escapeHtml(title)}</h3><span class="review-section-number">SECTION ${String(number).padStart(2,'0')}</span>`;
+
+    const body = document.createElement('dl');
+    body.className = 'review-section-body';
+    items.forEach(item => body.appendChild(item));
+
+    section.append(head, body);
+    grid.appendChild(section);
+  };
+
+  sections.forEach((sectionDef, index) => {
+    const items = [];
+    sectionDef.keys.forEach(key => {
+      const raw = data.get(key);
+      if(!raw) return;
+      const item = document.createElement('div');
+      item.className = 'review-item' + (REVIEW_FULL_WIDTH.has(key) ? ' full' : '') +
+        (key === 'position' || key === 'fullName' ? ' review-highlight' : '');
+      const label = REVIEW_LABELS[key] || key;
+      item.innerHTML = `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(formatValue(key, raw))}</dd>`;
+      items.push(item);
+    });
+    addSection(sectionDef.title, index + 1, items);
   });
 
-  for(const [key,label] of Object.entries(REVIEW_LABELS)){
-    const val = data.get(key);
-    if(!val) continue;
+  // Documents are shown separately so they are easy to verify before submission.
+  const documentItems = [];
+  UPLOAD_FIELDS.forEach(f => {
+    const input = document.getElementById(f.id);
+    const file = input && input.files ? input.files[0] : null;
+    let fileName = file ? file.name : '';
+
+    // If this is a restored draft, show the remembered file name and clearly
+    // indicate that the applicant must re-select the actual file before submitting.
+    if(!fileName){
+      try{
+        const saved = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+        fileName = saved.__fileNames && saved.__fileNames[f.id] ? saved.__fileNames[f.id] : '';
+      }catch(err){}
+    }
+
+    if(!fileName && !f.required) return;
+
     const item = document.createElement('div');
-    item.className = 'review-item' + (REVIEW_FULL_WIDTH.has(key) ? ' full' : '');
-    item.innerHTML = `<dt>${label}</dt><dd>${escapeHtml(val)}</dd>`;
-    grid.appendChild(item);
-  }
+    item.className = 'review-item full';
+    const note = file ? '' : ' — please re-select this file before submission';
+    item.innerHTML = `
+      <dt>${escapeHtml(f.label)}</dt>
+      <dd class="review-file">
+        <span class="review-file-icon">PDF</span>
+        <span class="review-file-name">${escapeHtml(fileName || 'Not selected')}${escapeHtml(note)}</span>
+      </dd>`;
+    documentItems.push(item);
+  });
+  addSection('Documents & uploads', sections.length + 1, documentItems);
 }
+
 function escapeHtml(s){
   return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -886,6 +1415,9 @@ form.addEventListener('submit', async (e)=>{
     // fetch(), so we fire the request in no-cors mode and treat network
     // success (no thrown error) as delivery succeeding server-side.
     await fetch(GAS_URL, { method:'POST', mode:'no-cors', body: params });
+
+    // Only clear the draft after the submission request has completed.
+    try{ localStorage.removeItem(DRAFT_KEY); }catch(err){}
 
     document.getElementById('refNo').textContent = 'APP-' + document.getElementById('fileNo').textContent;
     document.getElementById('formFrame').classList.add('hidden');
