@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMART WEB APPLICATION FORM</title>
+<title>Application —SMART WEB APPLICATION FORM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -105,21 +105,22 @@
 
   .field{display:flex;flex-direction:column;gap:6px;}
   .field label{font-size:12.5px;font-weight:600;color:var(--ink);}
+  .field[data-req] label::after{content:" *";color:var(--err);font-weight:700;}
   .field label .opt{font-weight:400;color:var(--slate);font-style:italic;}
   .field input[type=text], .field input[type=email], .field input[type=tel],
   .field input[type=date], .field input[type=url], .field input[type=number],
   .field select, .field textarea{
     font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);
-    background:transparent;border:none;border-bottom:1.5px solid var(--rule);
-    padding:8px 2px;transition:border-color .18s;width:100%;
+    background:var(--paper-raised);border:1.5px solid var(--rule);border-radius:7px;
+    padding:11px 13px;transition:border-color .18s, box-shadow .18s;width:100%;
   }
   .field textarea{resize:vertical;min-height:80px;line-height:1.5;}
   .field input:focus, .field select:focus, .field textarea:focus{
-    outline:none;border-bottom-color:var(--accent);
+    outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
   }
   .field .hint{font-size:11.5px;color:var(--slate);}
   .field .err{font-size:11.5px;color:var(--err);display:none;}
-  .field.invalid input, .field.invalid textarea, .field.invalid .upload{border-color:var(--err);border-bottom-color:var(--err);}
+  .field.invalid input, .field.invalid textarea, .field.invalid select, .field.invalid .upload{border-color:var(--err);}
   .field.invalid .err{display:block;}
 
   .upload{
@@ -188,7 +189,7 @@
   <header class="masthead">
     <div>
       <div class="eyebrow">Employment Application</div>
-      <h1>SMART WEB APPLICATION </h1>
+      <h1>SMART WEB APPLICATION FORM</h1>
     </div>
     <div class="meta">
       JAZ TECH<br>
@@ -197,6 +198,7 @@
   </header>
 
   <div class="frame" id="formFrame">
+    <p style="font-size:12px;color:var(--slate);margin:0 0 14px;">Fields marked <span style="color:var(--err);font-weight:700;">*</span> are required.</p>
     <nav class="rail" id="rail">
       <div class="tab active" data-idx="0"><span class="n">01</span> Personal</div>
       <div class="tab" data-idx="1"><span class="n">02</span> Position</div>
@@ -218,19 +220,19 @@
           <h3>Identity</h3>
           <div class="row">
             <div class="field" data-req>
-              <label for="fullName">Full name</label>
+              <label for="fullName">Full name (as on ID)</label>
               <input id="fullName" name="fullName" type="text" autocomplete="name">
               <span class="err">Enter your full name.</span>
             </div>
             <div class="field" data-req>
-              <label for="idNumber">National ID</label>
+              <label for="idNumber">National ID Number</label>
               <input id="idNumber" name="idNumber" type="text">
               <span class="err">Enter your ID or passport number.</span>
             </div>
           </div>
           <div class="row three">
             <div class="field" data-req>
-              <label for="dob">DOB</label>
+              <label for="dob">Date of birth</label>
               <input id="dob" name="dob" type="date">
               <span class="err">Enter your date of birth.</span>
             </div>
@@ -274,7 +276,7 @@
           <div class="row">
             <div class="field" data-req>
               <label for="phone">Phone number</label>
-              <input id="phone" name="phone" type="tel" placeholder="" autocomplete="tel">
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
               <span class="err">Enter a phone number.</span>
             </div>
             <div class="field">
@@ -290,6 +292,7 @@
             </div>
             <div class="field">
               <label for="postalAddress">Postal address <span class="opt">optional</span></label>
+              <input id="postalAddress" name="postalAddress" type="text">
             </div>
           </div>
           <div class="row single">
@@ -306,7 +309,7 @@
           <div class="row three">
             <div class="field" data-req>
               <label for="kraPin">KRA PIN</label>
-              <input id="nssfNumber" name="nssfNumber" type="text">
+              <input id="kraPin" name="kraPin" type="text">
               <span class="err">Enter your KRA PIN.</span>
             </div>
             <div class="field">
@@ -337,19 +340,19 @@
             <span class="err">This field is required.</span>
           </div>
           <div class="field" data-req>
-            <label for="availability">Availability </label>
-            <input id="availability" name="availability" type="text" placeholder=>
+            <label for="availability">Availability / notice period</label>
+            <input id="availability" name="availability" type="text">
             <span class="err">Tell us your availability.</span>
           </div>
         </div>
         <div class="row">
           <div class="field">
             <label for="currentSalary">Current gross salary (KES) <span class="opt">optional</span></label>
-            <input id="currentSalary" name="currentSalary" type="text" placeholder=>
+            <input id="currentSalary" name="currentSalary" type="text">
           </div>
           <div class="field" data-req>
             <label for="expectedSalary">Expected gross salary (KES)</label>
-            <input id="expectedSalary" name="expectedSalary" type="text" placeholder=>
+            <input id="expectedSalary" name="expectedSalary" type="text">
             <span class="err">Enter your expected salary.</span>
           </div>
         </div>
@@ -363,8 +366,8 @@
             </select>
           </div>
           <div class="field">
-            <label for="drivingLicense">Driving license<span class="opt">optional</span></label>
-            <input id="drivingLicense" name="drivingLicense" type="text" placeholder=>
+            <label for="drivingLicense">Driving license Number<span class="opt">optional</span></label>
+            <input id="drivingLicense" name="drivingLicense" type="text">
           </div>
         </div>
         <div class="row single">
@@ -422,14 +425,14 @@
           </div>
           <div class="field" data-req>
             <label for="graduationYear">Year of graduation</label>
-            <input id="graduationYear" name="graduationYear" type="text" placeholder=>
+            <input id="graduationYear" name="graduationYear" type="text" >
             <span class="err">Enter a graduation year.</span>
           </div>
         </div>
         <div class="row">
           <div class="field">
             <label for="professionalBody">Professional body membership <span class="opt">optional</span></label>
-            <input id="professionalBody" name="professionalBody" type="text" placeholder="e.g. ICPAK, LSK, EBK, KMPDU">
+            <input id="professionalBody" name="professionalBody" type="text" placeholder="e.g. ICPAK, LSK, KMPDU">
           </div>
           <div class="field">
             <label for="certifications">Other certifications <span class="opt">optional</span></label>
@@ -439,11 +442,11 @@
         <div class="row">
           <div class="field">
             <label for="itSkills">Computer / IT skills <span class="opt">optional</span></label>
-            <input id="itSkills" name="itSkills" type="text" placeholder=>
+            <input id="itSkills" name="itSkills" type="text">
           </div>
           <div class="field">
             <label for="languages">Languages spoken <span class="opt">optional</span></label>
-            <input id="languages" name="languages" type="text" placeholder=>
+            <input id="languages" name="languages" type="text">
           </div>
         </div>
         <div class="sheet-nav">
@@ -451,7 +454,6 @@
           <button type="button" class="btn primary" data-next>Continue</button>
         </div>
       </section>
-
 
       <!-- 04 WORK EXPERIENCE -->
       <section class="sheet hidden" data-tag="Sheet 4 of 7" data-section="3">
@@ -477,11 +479,12 @@
               <option>Less than 1 year</option>
               <option>1–3 years</option>
               <option>4–7 years</option>
+			  <option>8+ years</option>
             </select>
             <span class="err">Select an option.</span>
           </div>
           <div class="field">
-            <label for="reasonLeaving">Reason for leaving current / last role <span class="opt">optional</span></label>
+            <label for="reasonLeaving">Reason for leaving current / last Job <span class="opt">optional</span></label>
             <input id="reasonLeaving" name="reasonLeaving" type="text">
           </div>
         </div>
@@ -517,6 +520,10 @@
               <input id="ref1Name" name="ref1Name" type="text">
               <span class="err">Enter a name.</span>
             </div>
+		 <div class="field" data-req>
+              <label for="ref1Email">Organisation & Role</label>
+              <input id="ref1Email" name="ref1Email" type="email">
+            </div>
           </div>
           <div class="row">
             <div class="field" data-req>
@@ -524,16 +531,12 @@
               <input id="ref1Phone" name="ref1Phone" type="tel">
               <span class="err">Enter a phone number.</span>
             </div>
-            </div>
-            <div class="field">
-              <label for="ref1Email">COmpany & Role</label>
-              <input id="ref1Email" name="ref1Email" type="email">
-            </div>
-            <div class="field">
-              <label for="ref1Email">Email <span class="opt">optional</span></label>
+            <div class="field" data-req>
+              <label for="ref1Email">Email</label>
               <input id="ref1Email" name="ref1Email" type="email">
             </div>
           </div>
+        </div>
 
         <div class="subgroup">
           <h3>Referee 2</h3>
@@ -543,6 +546,10 @@
               <input id="ref2Name" name="ref2Name" type="text">
               <span class="err">Enter a name.</span>
             </div>
+			<div class="field" data-req>
+              <label for="ref1Email">Organisation & Role</label>
+              <input id="ref1Email" name="ref1Email" type="email">
+            </div>
           </div>
           <div class="row">
             <div class="field" data-req>
@@ -550,16 +557,12 @@
               <input id="ref2Phone" name="ref2Phone" type="tel">
               <span class="err">Enter a phone number.</span>
             </div>
-            </div>
-            <div class="field">
-              <label for="ref1Email">COmpany & Role</label>
-              <input id="ref1Email" name="ref1Email" type="email">
-            </div>
-            <div class="field">
-              <label for="ref1Email">Email <span class="opt">optional</span></label>
-              <input id="ref1Email" name="ref1Email" type="email">
+            <div class="field" data-req>
+              <label for="ref2Email">Email</label>
+              <input id="ref2Email" name="ref2Email" type="email">
             </div>
           </div>
+        </div>
 
         <div class="sheet-nav">
           <button type="button" class="btn ghost" data-back>Back</button>
@@ -631,7 +634,8 @@
         <div class="row">
           <div class="field">
             <label for="otherLink">Other links <span class="opt">optional</span></label>
-            <input id="otherLink" name="otherLink" type="url" placeholder="Portfolio or LinkedIn">
+            <input id="otherLink" name="otherLink" type="url" placeholder="https://">
+            <span class="hint">Portfolio or LinkedIn</span>
           </div>
         </div>
 
@@ -659,8 +663,7 @@
   <div class="confirm" id="confirmPanel">
     <div class="mark">&#10003;</div>
     <h2>Application received</h2>
-    <p>Thank you. Your application has been received and confirmation sent to your email. We will contact you should your application proceed to the next stage.
-</p>
+    <p>Thanks — your application and confirmation email are in. We'll be in touch if it's a fit.</p>
     <div class="ref">Reference: <span id="refNo"></span></div>
   </div>
 
