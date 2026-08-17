@@ -306,7 +306,6 @@
           <div class="row three">
             <div class="field" data-req>
               <label for="kraPin">KRA PIN</label>
-              <input id="kraPin" name="kraPin" type="text" placeholder="A0XXXXXXXXX">
               <span class="err">Enter your KRA PIN.</span>
             </div>
             <div class="field">
@@ -333,23 +332,19 @@
         <div class="row">
           <div class="field" data-req>
             <label for="position">Position applying for</label>
-            <input id="position" name="position" type="text" value="ICT &amp; DESIGN PROFESSIONAL">
             <span class="err">This field is required.</span>
           </div>
           <div class="field" data-req>
-            <label for="availability">Availability / notice period</label>
-            <input id="availability" name="availability" type="text" placeholder="e.g. Immediate, or 30 days' notice">
+            <label for="availability">Availability</label>
             <span class="err">Tell us your availability.</span>
           </div>
         </div>
         <div class="row">
           <div class="field">
             <label for="currentSalary">Current gross salary (KES) <span class="opt">optional</span></label>
-            <input id="currentSalary" name="currentSalary" type="text" placeholder="e.g. 85,000">
           </div>
           <div class="field" data-req>
             <label for="expectedSalary">Expected gross salary (KES)</label>
-            <input id="expectedSalary" name="expectedSalary" type="text" placeholder="e.g. 100,000">
             <span class="err">Enter your expected salary.</span>
           </div>
         </div>
@@ -364,7 +359,6 @@
           </div>
           <div class="field">
             <label for="drivingLicense">Driving license<span class="opt">optional</span></label>
-            <input id="drivingLicense" name="drivingLicense" type="text" placeholder="e.g. Class BCE">
           </div>
         </div>
         <div class="row single">
@@ -422,7 +416,6 @@
           </div>
           <div class="field" data-req>
             <label for="graduationYear">Year of graduation</label>
-            <input id="graduationYear" name="graduationYear" type="text" placeholder="e.g. 2021">
             <span class="err">Enter a graduation year.</span>
           </div>
         </div>
@@ -443,7 +436,6 @@
           </div>
           <div class="field">
             <label for="languages">Languages spoken <span class="opt">optional</span></label>
-            <input id="languages" name="languages" type="text" placeholder="e.g. English, Kiswahili, French">
           </div>
         </div>
         <div class="sheet-nav">
@@ -523,12 +515,14 @@
               <input id="ref1Phone" name="ref1Phone" type="tel">
               <span class="err">Enter a phone number.</span>
             </div>
+            </div>
+            <div class="row">
             <div class="field">
               <label for="ref1Email">Email <span class="opt">optional</span></label>
               <input id="ref1Email" name="ref1Email" type="email">
             </div>
+            </div>
           </div>
-        </div>
 
         <div class="subgroup">
           <h3>Referee 2</h3>
@@ -545,12 +539,14 @@
               <input id="ref2Phone" name="ref2Phone" type="tel">
               <span class="err">Enter a phone number.</span>
             </div>
+            </div>
+            <div class="row">
             <div class="field">
               <label for="ref2Email">Email <span class="opt">optional</span></label>
               <input id="ref2Email" name="ref2Email" type="email">
             </div>
           </div>
-        </div>
+          </div>
 
         <div class="sheet-nav">
           <button type="button" class="btn ghost" data-back>Back</button>
@@ -622,8 +618,7 @@
         <div class="row">
           <div class="field">
             <label for="otherLink">Other links <span class="opt">optional</span></label>
-            <input id="otherLink" name="otherLink" type="url" placeholder="https://">
-            <span class="hint">Portfolio or LinkedIn</span>
+            <input id="otherLink" name="otherLink" type="url" placeholder="Portfolio or LinkedIn">
           </div>
         </div>
 
