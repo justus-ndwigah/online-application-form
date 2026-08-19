@@ -8,7 +8,7 @@ The system provides applicants with a structured, user-friendly application form
 
 ## 🌐 Project Overview
 
-The JAZ TECH Online Job Application System replaces traditional paper-based job applications with a centralized digital application process.
+The Smart Web Job Application System replaces traditional paper-based job applications with a centralized digital application process.
 
 Applicants can complete the application form online, upload their required documents, review their information before submission, and receive an application confirmation by email.
 
