@@ -431,6 +431,29 @@
   box-sizing: border-box;
 }
 
+
+  /* ---------- documents: numbered subsections ---------- */
+  .document-stack{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .document-card{
+    width:100%;
+    box-sizing:border-box;
+  }
+  .document-upload-row{
+    margin:0;
+  }
+  .document-card .field{
+    margin-bottom:0;
+  }
+  .required-mark{
+    color:var(--err);
+    font-weight:700;
+  }
+
 </style>
 </head>
 <body>
@@ -849,63 +872,86 @@
       <!-- 06 DOCUMENTS -->
       <section class="sheet hidden" data-tag="Sheet 6 of 7" data-section="5">
         <h2>Documents &amp; links</h2>
-        <p class="sub">Upload your résumé and supporting documents. Portfolio work and anything else can be shared as a link.</p>
+        <p class="sub">Upload the documents required to support your application.</p>
 
-        <div class="row single">
-          <div class="field" data-req>
-            <label for="resumeFile">Résumé / CV</label>
-            <label class="upload" id="resumeFileUpload" for="resumeFile">
-              <span class="icon">↑</span>
-              <span class="text">
-                <span class="fname" id="resumeFileName">Click to upload your résumé</span><br>
-                <span class="fallback">PDF, DOC, or DOCX · <span class="limit">Max 10&nbsp;MB</span></span>
-              </span>
-              <input id="resumeFile" name="resumeFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-            </label>
-            <span class="err">Upload your résumé to continue.</span>
+        <div class="document-stack">
+          <!-- 01 RESUME -->
+          <div class="referee-card document-card">
+            <div class="referee-card-head">
+              <span class="referee-number">01</span>
+              <div>
+                <h3>Résumé</h3>
+                <p>Required application document</p>
+              </div>
+            </div>
+
+            <div class="row single document-upload-row">
+              <div class="field" data-req>
+                <label for="resumeFile">Résumé / CV <span class="required-mark">*</span></label>
+                <label class="upload" id="resumeFileUpload" for="resumeFile">
+                  <span class="icon">↑</span>
+                  <span class="text">
+                    <span class="fname" id="resumeFileName">Click to upload your résumé</span><br>
+                    <span class="fallback">PDF, DOC, or DOCX · <span class="limit">Max 10&nbsp;MB</span></span>
+                  </span>
+                  <input id="resumeFile" name="resumeFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                </label>
+                <span class="err">Upload your résumé to continue.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 COVER LETTER -->
+          <div class="referee-card document-card">
+            <div class="referee-card-head">
+              <span class="referee-number">02</span>
+              <div>
+                <h3>Cover Letter</h3>
+                <p>Required application document</p>
+              </div>
+            </div>
+
+            <div class="row single document-upload-row">
+              <div class="field" data-req>
+                <label for="coverLetterFile">Cover letter <span class="required-mark">*</span></label>
+                <label class="upload" id="coverLetterFileUpload" for="coverLetterFile">
+                  <span class="icon">↑</span>
+                  <span class="text">
+                    <span class="fname" id="coverLetterFileName">Click to upload your cover letter</span><br>
+                    <span class="fallback">PDF, DOC, or DOCX · <span class="limit">Max 10&nbsp;MB</span></span>
+                  </span>
+                  <input id="coverLetterFile" name="coverLetterFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                </label>
+                <span class="err">Upload your cover letter to continue.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 OTHER SUPPORTING DOCUMENT -->
+          <div class="referee-card document-card">
+            <div class="referee-card-head">
+              <span class="referee-number">03</span>
+              <div>
+                <h3>Other Supporting Document</h3>
+                <p>Optional additional document</p>
+              </div>
+            </div>
+
+            <div class="row single document-upload-row">
+              <div class="field">
+                <label for="othersFile">Other supporting document <span class="opt">optional</span></label>
+                <label class="upload" id="othersFileUpload" for="othersFile">
+                  <span class="icon">↑</span>
+                  <span class="text">
+                    <span class="fname" id="othersFileName">Click to upload</span><br>
+                    <span class="fallback">PDF, DOC, DOCX, or image · <span class="limit">Max 10&nbsp;MB</span></span>
+                  </span>
+                  <input id="othersFile" name="othersFile" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*">
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="row single">
-          <div class="field">
-            <label for="coverLetterFile">Cover letter <span class="opt">optional</span></label>
-            <label class="upload" id="coverLetterFileUpload" for="coverLetterFile">
-              <span class="icon">↑</span>
-              <span class="text">
-                <span class="fname" id="coverLetterFileName">Click to upload a cover letter</span><br>
-                <span class="fallback">PDF, DOC, or DOCX · <span class="limit">Max 10&nbsp;MB</span></span>
-              </span>
-              <input id="coverLetterFile" name="coverLetterFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="idCopyFile">Copy of ID / passport <span class="opt">optional</span></label>
-            <label class="upload" id="idCopyFileUpload" for="idCopyFile">
-              <span class="icon">↑</span>
-              <span class="text">
-                <span class="fname" id="idCopyFileName">Click to upload</span><br>
-                <span class="fallback">PDF or image · <span class="limit">Max 10&nbsp;MB</span></span>
-              </span>
-              <input id="idCopyFile" name="idCopyFile" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/*">
-            </label>
-          </div>
-          <div class="field">
-            <label for="academicCertsFile">Academic certificates <span class="opt">optional</span></label>
-            <label class="upload" id="academicCertsFileUpload" for="academicCertsFile">
-              <span class="icon">↑</span>
-              <span class="text">
-                <span class="fname" id="academicCertsFileName">Click to upload</span><br>
-                <span class="fallback">PDF (combine into one file) · <span class="limit">Max 10&nbsp;MB</span></span>
-              </span>
-              <input id="academicCertsFile" name="academicCertsFile" type="file" accept=".pdf,application/pdf">
-            </label>
-          </div>
-        </div>
-
-
 
         <div class="row">
           <div class="field">
@@ -971,10 +1017,9 @@ const KENYA_COUNTIES = [
 })();
 
 const UPLOAD_FIELDS = [
-  { id:'resumeFile',        required:true,  label:'Résumé / CV' },
-  { id:'coverLetterFile',   required:false, label:'Cover letter' },
-  { id:'idCopyFile',        required:false, label:'ID / passport copy' },
-  { id:'academicCertsFile', required:false, label:'Academic certificates' },
+  { id:'resumeFile',      required:true,  label:'Résumé / CV' },
+  { id:'coverLetterFile', required:true,  label:'Cover Letter' },
+  { id:'othersFile',      required:false, label:'Other Supporting Document' },
 ];
 
 const form = document.getElementById('appForm');
