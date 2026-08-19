@@ -4,6 +4,7 @@ A professional web-based job application and recruitment system developed for **
 
 The system provides applicants with a structured, user-friendly application form where they can submit personal information, education, professional experience, referees, and required employment documents.
 
+![Application Form](screenshots/application-form.png)
 ---
 
 ## 🌐 Project Overview
@@ -37,7 +38,7 @@ The system collects:
 - Relocation preference
 - Driving licence information
 - How the applicant heard about the opportunity
-
+![Application Form](screenshots/personal-information.png)
 ---
 
 ### 🎓 Education & Professional Information
@@ -52,7 +53,7 @@ Applicants can provide:
 - Professional certifications
 - IT skills
 - Languages
-
+![Application Form](screenshots/education-section.png)
 ---
 
 ### 💼 Employment & Experience
@@ -81,6 +82,7 @@ Each referee can provide:
 
 The information is displayed in a clean, structured format during the application review stage.
 
+![Application Form](screenshots/referees-section.png)
 ---
 
 ### 📄 Document Uploads
@@ -121,6 +123,7 @@ Applicants may upload an additional supporting document such as:
 
 Maximum file size: **10 MB**
 
+![Application Form](screenshots/documents-section.png)
 ---
 
 ## 💾 Automatic Draft Saving
@@ -166,6 +169,7 @@ The review organizes information into categories such as:
 
 This allows applicants to verify their information before final submission.
 
+![Application Form](screenshots/review-section.png)
 ---
 
 ## ☁️ Google Apps Script Backend
