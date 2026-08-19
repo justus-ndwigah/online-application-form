@@ -1,10 +1,9 @@
-# JAZ TECH Online Job Application System
+# Smart Web Application System
 
 A professional web-based job application and recruitment system developed for **JAZ TECH** to streamline the collection, management, and processing of employment applications.
 
 The system provides applicants with a structured, user-friendly application form where they can submit personal information, education, professional experience, referees, and required employment documents.
 
-![Application Form](screenshots/application-form.png)
 ---
 
 ## 🌐 Project Overview
@@ -15,6 +14,7 @@ Applicants can complete the application form online, upload their required docum
 
 Submitted applications are automatically processed and stored using **Google Apps Script, Google Sheets, and Google Drive**.
 
+![Application Form](screenshots/application-form.png)
 ---
 
 ## ✨ Key Features
@@ -38,6 +38,7 @@ The system collects:
 - Relocation preference
 - Driving licence information
 - How the applicant heard about the opportunity
+  
 ![Application Form](screenshots/personal-information.png)
 ---
 
@@ -53,6 +54,7 @@ Applicants can provide:
 - Professional certifications
 - IT skills
 - Languages
+  
 ![Application Form](screenshots/education-section.png)
 ---
 
@@ -66,7 +68,8 @@ The system captures:
 - Reason for leaving
 - Key responsibilities
 - Applicant's motivation and suitability for the position
-
+- 
+![Application Form](screenshots/experience-section.png)
 ---
 
 ### 👥 Referee Management
